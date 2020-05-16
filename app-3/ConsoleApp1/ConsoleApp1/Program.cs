@@ -29,6 +29,7 @@ namespace ConsoleApp1
                 foreach (var file in Directory.EnumerateFiles(sharePath))
                 {
                     Console.WriteLine(file);
+                    Console.WriteLine(File.ReadAllText(file));
                 }
 
                 File.Delete(testFilePath);
