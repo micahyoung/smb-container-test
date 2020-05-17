@@ -3,9 +3,9 @@ set -o errexit -o pipefail -o nounset
 
 app=${1:?"usage $0 app-1|app-2|app-3"}
 
-trap "cf delete -f test-${app} || true" EXIT
-
 source secrets/env.sh
+
+trap "cf delete -f test-${app} || true" EXIT
 
 cf push test-${app} -p ${app}/ -u none -b binary_buildpack -s windows -c 'powershell.exe Start-Sleep 99999' --no-route --no-start
 
