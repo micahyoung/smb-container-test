@@ -14,10 +14,10 @@ cf set-env test-${app} SMB_USERNAME $SMB_USERNAME
 cf set-env test-${app} SMB_PASSWORD $SMB_PASSWORD
 
 cf start test-${app}
-sleep 10
-LOGS=$(cf logs test-${app} --recent)
+sleep 15
+LOGS="$(cf logs test-${app} --recent)"
 if ! grep -q "OUT hello" <(echo $LOGS); then
-  echo $LOGS
+  echo "$LOGS"
   echo =============================
   echo FAIL: no success message found in logs
   echo =============================
