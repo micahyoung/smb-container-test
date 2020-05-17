@@ -13,10 +13,20 @@ cf set-env test-${app} SMB_SHARE $SMB_SHARE
 cf set-env test-${app} SMB_USERNAME $SMB_USERNAME
 cf set-env test-${app} SMB_PASSWORD $SMB_PASSWORD
 
-cf logs test-${app} &
 cf start test-${app}
 sleep 10
-kill %1
+LOGS=$(cf logs test-${app} --recent)
+if ! grep -q "OUT hello" <(echo $LOGS); then
+  echo $LOGS
+  echo =============================
+  echo FAIL: no success message found in logs
+  echo =============================
+  exit 1
+else
+  echo =============================
+  echo PASS: success message found in logs
+  echo =============================
+fi
 
 # Uncomment for Docker
 #test_image_tags=(
