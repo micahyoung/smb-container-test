@@ -19,6 +19,12 @@ sleep 10
 kill %1
 
 # Uncomment for Docker
-#image_tag=mcr.microsoft.com/dotnet/framework/runtime:4.7.2-windowsservercore-ltsc2019
-#docker build ${app}/ -f Dockerfile --build-arg image_tag=$image_tag --build-arg SMB_SHARE --build-arg SMB_USERNAME --build-arg SMB_PASSWORD --isolation=hyperv
-
+#test_image_tags=(
+#  mcr.microsoft.com/dotnet/framework/runtime:4.7.2-windowsservercore-ltsc2019
+#  cloudfoundry/windows2016fs:2019.0.33
+#  cloudfoundry/windows2016fs:2019
+#)
+#
+#for image_tag in ${test_image_tags[@]}; do
+#  docker build ${app}/ -f Dockerfile --build-arg image_tag=$image_tag --build-arg SMB_SHARE --build-arg SMB_USERNAME --build-arg SMB_PASSWORD --isolation=hyperv
+#done
