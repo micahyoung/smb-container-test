@@ -20,11 +20,15 @@ kill %1
 
 # Uncomment for Docker
 #test_image_tags=(
-#  mcr.microsoft.com/dotnet/framework/runtime:4.7.2-windowsservercore-ltsc2019
+#  cloudfoundry/windows2016fs:2019.0.48
 #  cloudfoundry/windows2016fs:2019.0.33
 #  cloudfoundry/windows2016fs:2019
+#  mcr.microsoft.com/dotnet/framework/runtime:4.7.2-windowsservercore-ltsc2019
+#  mcr.microsoft.com/windows/servercore:1809
+#  mcr.microsoft.com/windows/servercore:1903
+#  mcr.microsoft.com/windows/servercore:1909
 #)
 #
 #for image_tag in ${test_image_tags[@]}; do
-#  docker build ${app}/ -f Dockerfile --build-arg image_tag=$image_tag --build-arg SMB_SHARE --build-arg SMB_USERNAME --build-arg SMB_PASSWORD --isolation=hyperv
+#  docker build ${app}/ -f Dockerfile --build-arg image_tag=$image_tag --build-arg SMB_SHARE --build-arg SMB_USERNAME --build-arg SMB_PASSWORD --no-cache --isolation=hyperv
 #done
