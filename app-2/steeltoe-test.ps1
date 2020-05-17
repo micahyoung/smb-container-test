@@ -6,7 +6,6 @@ echo running ps
 
 try
 {
-  Add-Type -Path "Steeltoe.Common.dll"
   Add-Type -Path "Steeltoe.Common.Net.dll"
 }
 catch [System.Reflection.ReflectionTypeLoadException]
