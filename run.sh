@@ -7,7 +7,7 @@ trap "cf delete -f test-${app} || true" EXIT
 
 source secrets/env.sh
 
-cf push test-${app} -p ${app}/ -u none -b binary_buildpack -s windows -c 'powershell.exe Start-Sleep 99999' --no-start
+cf push test-${app} -p ${app}/ -u none -b binary_buildpack -s windows -c 'powershell.exe Start-Sleep 99999' --no-route --no-start
 
 cf set-env test-${app} SMB_SHARE $SMB_SHARE
 cf set-env test-${app} SMB_USERNAME $SMB_USERNAME
