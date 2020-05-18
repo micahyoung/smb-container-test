@@ -1,0 +1,12 @@
+applications:
+- name: test-app-4
+  buildpacks:
+  - hwc_buildpack
+  path: ./WebApplication1/WebApplication1/bin/Release/Publish/
+  disk_quota: 1G
+  health-check-type: http
+  health-check-invocation-timeout: 60
+  instances: 1
+  memory: 1G
+  no-route: true
+  stack: windows

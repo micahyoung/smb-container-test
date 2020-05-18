@@ -1,0 +1,11 @@
+applications:
+- name: test-app
+  buildpacks:
+  - binary_buildpack
+  command: powershell.exe Start-Sleep 99999
+  disk_quota: 1G
+  health-check-type: none
+  instances: 1
+  memory: 1G
+  no-route: true
+  stack: windows

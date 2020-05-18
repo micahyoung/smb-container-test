@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Common</name>
+    </assembly>
+    <members>
+        <member name="M:Steeltoe.Common.Configuration.IConfigurationBuilderExtensions.AddResolvedPlaceholders(Microsoft.Extensions.Configuration.IConfigurationBuilder,System.Boolean,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Finds all placeholders of the form <code> ${some:config:reference?default_if_not_present}</code>,
+            resolves them from other values in the configuration, adds resolved values to your configuration.
+            </summary>
+            <param name="configurationBuilder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> which contains properties to be resolved</param>
+            <param name="useEmptyStringIfNotFound">Replace unresolved placeholders with empty strings, so the application does not see them</param>
+            <param name="logger">Optional logger</param>
+            <returns><see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> with additional provider which contains resolved placeholders</returns>
+        </member>
+        <member name="T:Steeltoe.Common.Configuration.PropertyPlaceholderHelper">
+            <summary>
+            Utility class for working with configuration values that have placeholders in them.
+            A placeholder takes the form of <code> ${some:config:reference?default_if_not_present}></code>
+            Note: This was "inspired" by the Spring class: PropertyPlaceholderHelper
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Configuration.PropertyPlaceholderHelper.ResolvePlaceholders(System.String,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Replaces all placeholders of the form <code> ${some:config:reference?default_if_not_present}</code>
+            with the corresponding value from the supplied <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="property">the string containing one or more placeholders</param>
+            <param name="config">the configuration used for finding replace values.</param>
+            <param name="logger">optional logger</param>
+            <returns>the supplied value with the placeholders replaced inline</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Configuration.PropertyPlaceholderHelper.GetResolvedConfigurationPlaceholders(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger,System.Boolean)">
+            <summary>
+            Finds all placeholders of the form <code> ${some:config:reference?default_if_not_present}</code>,
+            resolves them from other values in the configuration, returns a new list to add to your configuration.
+            </summary>
+            <param name="config">The configuration to use as both source and target for placeholder resolution.</param>
+            <param name="logger">Optional logger</param>
+            <param name="useEmptyStringIfNotFound">Replace the placeholder with an empty string, so the application does not see it</param>
+            <returns>A list of keys with resolved values. Add to your <see cref="T:Microsoft.Extensions.Configuration.ConfigurationBuilder"/> with method 'AddInMemoryCollection'</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IDiscoveryClient.GetLocalServiceInstance">
+            <summary>
+             ServiceInstance with information used to register the local service
+            </summary>
+            <returns>The IServiceInstance</returns>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.ServiceId">
+            <summary>
+             Gets the service id as register by the DiscoveryClient
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Host">
+            <summary>
+            Gets the hostname of the registered ServiceInstance
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Port">
+            <summary>
+            Gets the port of the registered ServiceInstance
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.IsSecure">
+            <summary>
+            Gets a value indicating whether if the port of the registered ServiceInstance is https or not
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Uri">
+            <summary>
+            Gets the service uri address
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Metadata">
+            <summary>
+             Gets the key value pair metadata associated with the service instance
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstanceProvider.Description">
+            <summary>
+            Gets a human readable description of the implementation
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstanceProvider.Services">
+            <summary>
+            Gets all known service Ids
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IServiceInstanceProvider.GetInstances(System.String)">
+            <summary>
+            Get all ServiceInstances associated with a particular serviceId
+            </summary>
+            <param name="serviceId">the serviceId to lookup</param>
+            <returns>List of service instances</returns>
+        </member>
+        <member name="T:Steeltoe.Common.Discovery.IServiceRegistry`1">
+            <summary>
+            Represents a Service registry (e.g. Consul, etc.)
+            </summary>
+            <typeparam name="T">a type representing a service instance</typeparam>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IServiceRegistry`1.Register(`0)">
+            <summary>
+            Register a service instance in the service registry
+            </summary>
+            <param name="registration">the service instance to register</param>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IServiceRegistry`1.Deregister(`0)">
+            <summary>
+            Deregister a service instance in the service registry
+            </summary>
+            <param name="registration">the service instance to register</param>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IServiceRegistry`1.SetStatus(`0,System.String)">
+            <summary>
+            Update the registration in the service registry with the provided status
+            </summary>
+            <param name="registration">the registration to update</param>
+            <param name="status">the status</param>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IServiceRegistry`1.GetStatus``1(`0)">
+            <summary>
+            Return the current status of the service registry registration
+            </summary>
+            <typeparam name="S">the status</typeparam>
+            <param name="registration">the service registration to obtain status for</param>
+            <returns>the returned status</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Extensions.UriExtensions.ParseQuerystring(System.String)">
+            <summary>
+            Parse a querystring into a dictionary of key value pairs
+            </summary>
+            <param name="querystring">The querystring to parse</param>
+            <returns>Pairs of keys and values</returns>
+        </member>
+        <member name="T:Steeltoe.Common.HealthChecks.HealthCheckResult">
+            <summary>
+            The result of a health check
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Status">
+            <summary>
+            Gets or sets the status of the check
+            </summary>
+            <remarks>Used by HealthMiddleware to determine HTTP Status code</remarks>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Description">
+            <summary>
+            Gets or sets a description of the health check result
+            </summary>
+            <remarks>Currently only used on check failures</remarks>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Details">
+            <summary>
+            Gets or sets details of the checked item
+            </summary>
+            <remarks>For parity with Spring Boot, repeat status [with a call to .ToString()] here</remarks>
+        </member>
+        <member name="T:Steeltoe.Common.HealthChecks.IHealthContributor">
+            <summary>
+            Implement this interface and add to DI to be included in health checks
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.IHealthContributor.Id">
+            <summary>
+            Gets an identifier for the type of check being performed
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.HealthChecks.IHealthContributor.Health">
+            <summary>
+            Check the health of a resource
+            </summary>
+            <returns>The result of checking the health of a resource</returns>
+        </member>
+        <member name="M:Steeltoe.Common.LoadBalancer.ILoadBalancer.ResolveServiceInstanceAsync(System.Uri)">
+            <summary>
+            Evaluates a Uri for a host name that can be resolved into a service instance
+            </summary>
+            <param name="request">A Uri containing a service name that can be resolved into one or more service instances</param>
+            <returns>The original Uri, with serviceName replaced by the host:port of a service instance</returns>
+        </member>
+        <member name="M:Steeltoe.Common.LoadBalancer.ILoadBalancer.UpdateStatsAsync(System.Uri,System.Uri,System.TimeSpan,System.Exception)">
+            <summary>
+            A mechanism for tracking statistics for service instances
+            </summary>
+            <param name="originalUri">The original request Uri</param>
+            <param name="resolvedUri">The Uri resolved by the load balancer</param>
+            <param name="responseTime">The amount of time taken for a remote call to complete</param>
+            <param name="exception">Any exception called during calls to a resolved service instance</param>
+            <returns>A task</returns>
+        </member>
+        <member name="M:Steeltoe.Common.LoadBalancer.RandomLoadBalancer.#ctor(Steeltoe.Common.Discovery.IServiceInstanceProvider,Microsoft.Extensions.Caching.Distributed.IDistributedCache,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Common.LoadBalancer.RandomLoadBalancer"/> class.
+            Returns random service instances, with option caching of service lookups
+            </summary>
+            <param name="serviceInstanceProvider">Provider of service instance information</param>
+            <param name="distributedCache">For caching service instance data</param>
+            <param name="logger">For logging</param>
+        </member>
+        <member name="P:Steeltoe.Common.Platform.IsCloudHosted">
+            <summary>
+            Gets a value indicating whether an app is running on a cloud provider. Currently supports Cloud Foundry and Kubernetes
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.FindAssembly(System.String)">
+            <summary>
+            Find an assembly
+            </summary>
+            <param name="name">Name of the assembly to find</param>
+            <returns>A representation of the assembly</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.FindType(System.String[],System.String[])">
+            <summary>
+            Search a list of assemblies for the first matching type
+            </summary>
+            <param name="assemblyNames">List of assembly names to search</param>
+            <param name="typeNames">List of suitable types</param>
+            <returns>An appropriate type</returns>
+            <remarks>Great for finding an implementation type that could have one or more names in one or more assemblies</remarks>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.FindType(System.Reflection.Assembly,System.String)">
+            <summary>
+            Find a type from within an assembly
+            </summary>
+            <param name="assembly">The assembly to search</param>
+            <param name="typeName">The name of the type to retrieve</param>
+            <returns>The type</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.FindTypeOrThrow(System.String[],System.String[],System.String,System.String)">
+            <summary>
+            Search a list of assemblies for the first matching type
+            </summary>
+            <param name="assemblyNames">List of assembly names to search</param>
+            <param name="typeNames">List of suitable types</param>
+            <param name="typeName">To use in exception</param>
+            <param name="assemblyShortDescription">Describe what might be missing</param>
+            <returns>An appropriate type</returns>
+            <remarks>Great for finding an implementation type that could have one or more names in one or more assemblies</remarks>
+            <exception cref="T:System.Exception">When type isn't found</exception>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.FindMethod(System.Type,System.String,System.Type[])">
+            <summary>
+            Find a method within a type
+            </summary>
+            <param name="type">The type to search</param>
+            <param name="methodName">The name of the method</param>
+            <param name="parameters">(Optional) The parameters in the signature</param>
+            <returns>The method you're searching for</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.Invoke(System.Reflection.MethodBase,System.Object,System.Object[])">
+            <summary>
+            Invoke a function
+            </summary>
+            <param name="member">The method to execute</param>
+            <param name="instance">Instance of an object, if required by the method</param>
+            <param name="args">Arguments to pass to the method</param>
+            <returns>Results of method call</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            Create an instance of a type
+            </summary>
+            <param name="t">Type to instantiate</param>
+            <param name="args">Constructor parameters</param>
+            <returns>New instance of desired type</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Reflection.ReflectionHelpers.TrySetProperty(System.Object,System.String,System.Object)">
+            <summary>
+            Try to set a property on an object
+            </summary>
+            <param name="obj">Object to set a value on</param>
+            <param name="property">Property to set</param>
+            <param name="value">Value to use</param>
+        </member>
+        <member name="T:Steeltoe.Common.SecurityUtilities">
+            <summary>
+            Helpers for compliance with security scans
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.SecurityUtilities.SanitizeInput(System.String)">
+            <summary>
+            Remove line endings and HTML-encode strings. Useful for logging (potentially) user-entered data
+            </summary>
+            <param name="inputString">Some string to sanitize</param>
+            <returns>HTML-encoded version of original string with CR and LF removed</returns>
+        </member>
+        <member name="T:Steeltoe.Common.Tasks.IApplicationTask">
+            <summary>
+            A runnable task bundled with the assembly that can be executed on-demand
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Tasks.IApplicationTask.Name">
+            <summary>
+            Gets globally unique name for the task
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Tasks.IApplicationTask.Run">
+            <summary>
+            Action which to run
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ConfigurationServiceInstanceProviderServiceCollectionExtensions.AddConfigurationDiscoveryClient(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Adds an IConfiguration-based <see cref="T:Steeltoe.Common.Discovery.IServiceInstanceProvider"/> to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+            </summary>
+            <param name="services">Your <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+            <param name="configuration">Application configuration</param>
+            <param name="serviceLifetime">Lifetime of the <see cref="T:Steeltoe.Common.Discovery.IServiceInstanceProvider"/></param>
+            <returns>IServiceCollection for chaining</returns>
+        </member>
+    </members>
+</doc>
